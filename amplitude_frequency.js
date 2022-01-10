@@ -25,8 +25,16 @@ var Line=function(xcoords,ycoords){
         c.stroke();
     };
 }
-
-
+var line = new Line();
+function updateLine(){
+    
+    let X = linspace(0,canvas.width)
+    let Y = add(canvas.height/2,mul(amplitude,X.map(x => Math.sin(2*Math.PI*frequency*x/canvas.width))));
+    
+    
+    line.update(X,Y);
+    
+}
 
 // GET AMPLITUDE FROM SLIDER
 var amplitude = canvas.height/2;
@@ -34,11 +42,7 @@ const amplitudeSlider=document.getElementById("amplitudeSlider");
 const amplitudeOutput = document.getElementById("amplitudeOutput");
 amplitudeSlider.oninput = function(){ 
     amplitude = Math.round(parseInt(this.value)/50*canvas.height/2);
-    let X = linspace(0,canvas.width)
-    let Y = add(canvas.height/2,mul(amplitude,X.map(x => Math.sin(2*Math.PI*frequency*x/canvas.width))));
-    
-    
-    line.update(X,Y);
+    updateLine();
     amplitudeOutput.textContent="Amplitude:"+amplitude;
 }
 
@@ -48,23 +52,14 @@ const frequencySlider=document.getElementById("frequencySlider");
 const frequencyOutput = document.getElementById("frequencyOutput");
 frequencySlider.oninput = function(){ 
     frequency=parseInt(this.value)/50;
-    let X = linspace(0,canvas.width)
-    let Y = add(canvas.height/2,mul(amplitude,X.map(x => Math.sin(2*Math.PI*frequency*x/canvas.width))));
-    
-    
-    line.update(X,Y);
+    updateLine();
     frequencyOutput.textContent="Frequency:"+frequency;
 }
 
 
 
 
-// INITIAL PLOTTING
-let X = linspace(0,canvas.width)
-let Y = add(canvas.height/2,mul(amplitude,X.map(x => Math.sin(2*Math.PI*frequency*x/canvas.width))));
-
-var line=new Line(X,Y)
-line.update(X,Y);
+updateLine();
 
 
 
@@ -85,7 +80,7 @@ function(event){
     meanposx = canvas.width/2; // mean position in x direction
     meanposy = canvas.height/2; // mean position in y direction
     console.log('Window resized')
-    line.update();
+    updateLine();
     
 })
 
