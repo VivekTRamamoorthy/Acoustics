@@ -28,6 +28,9 @@ SoundPressureSlider.oninput = function(){
 
 function SoundPressureUpdate(SoundPressureValue){
     // clear canvas
+    SoundPressureCanvas.width=SoundPressureCanvas.clientWidth;
+    SoundPressureCanvas.height=SoundPressureCanvas.clientHeight;
+
     SPC.clearRect(0,0,SoundPressureCanvas.width,SoundPressureCanvas.height)
 
     // Draw axis

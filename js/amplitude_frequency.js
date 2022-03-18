@@ -1,9 +1,9 @@
 
 
-var canvas=document.getElementById('AmplitudeFrequencyCanvas');
-canvas.width=window.innerWidth*.9;
-canvas.height=400;
-var c=canvas.getContext('2d');
+var AmplitudeFrequencyCanvas=document.getElementById('AmplitudeFrequencyCanvas');
+AmplitudeFrequencyCanvas.width=window.innerWidth*.9;
+AmplitudeFrequencyCanvas.height=400;
+var c=AmplitudeFrequencyCanvas.getContext('2d');
 
 var Line=function(xcoords,ycoords){
     this.xcoords=xcoords;
@@ -14,7 +14,9 @@ var Line=function(xcoords,ycoords){
         this.draw();
     };
     this.draw=function(){
-        c.clearRect(0,0,canvas.width,canvas.height);
+        AmplitudeFrequencyCanvas.width=AmplitudeFrequencyCanvas.clientWidth;
+        AmplitudeFrequencyCanvas.height=AmplitudeFrequencyCanvas.clientHeight;
+        c.clearRect(0,0,AmplitudeFrequencyCanvas.width,AmplitudeFrequencyCanvas.height);
         c.beginPath();
         c.moveTo(this.xcoords[0],this.ycoords[0]);
         for(var i=0;i<=this.xcoords.length;i++){
@@ -28,8 +30,8 @@ var Line=function(xcoords,ycoords){
 var line = new Line();
 function updateLine(){
     
-    let X = linspace(0,canvas.width)
-    let Y = add(canvas.height/2,mul(amplitude,X.map(x => Math.sin(2*Math.PI*frequency*x/canvas.width))));
+    let X = linspace(0,AmplitudeFrequencyCanvas.width)
+    let Y = add(AmplitudeFrequencyCanvas.height/2,mul(amplitude,X.map(x => Math.sin(2*Math.PI*frequency*x/AmplitudeFrequencyCanvas.width))));
     
     
     line.update(X,Y);
@@ -37,11 +39,11 @@ function updateLine(){
 }
 
 // GET AMPLITUDE FROM SLIDER
-var amplitude = canvas.height/2;
+var amplitude = AmplitudeFrequencyCanvas.height/2;
 const amplitudeSlider=document.getElementById("amplitudeSlider");
 const amplitudeOutput = document.getElementById("amplitudeOutput");
 amplitudeSlider.oninput = function(){ 
-    amplitude = Math.round(parseInt(this.value)/50*canvas.height/2);
+    amplitude = Math.round(parseInt(this.value)/50*AmplitudeFrequencyCanvas.height/2);
     updateLine();
     amplitudeOutput.textContent="Amplitude:"+amplitude;
 }
@@ -75,10 +77,10 @@ updateLine();
 // Event listener for window resizing
 window.addEventListener('resize',
 function(event){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight*.9;
-    meanposx = canvas.width/2; // mean position in x direction
-    meanposy = canvas.height/2; // mean position in y direction
+    AmplitudeFrequencyCanvas.width = window.innerWidth;
+    AmplitudeFrequencyCanvas.height = window.innerHeight*.9;
+    meanposx = AmplitudeFrequencyCanvas.width/2; // mean position in x direction
+    meanposy = AmplitudeFrequencyCanvas.height/2; // mean position in y direction
     console.log('Window resized')
     updateLine();
     

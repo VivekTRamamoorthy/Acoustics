@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="acoustics, plane waves, sound, tutorial">
     <meta name="description" content="What are plane waves in acoustics tutorial">
-    <title>Plane waves</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Acoustics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css" integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    
     <!-- <script defer src="cx.js"></script> -->
-    <script defer src="planewaves.js"></script>
-    <script defer src="plotlib.js"></script>
-    <script defer src="amplitude_frequency.js"></script>
-    <script defer src="ParticleMotion.js"></script>
-    <script defer src="SoundPressure.js"></script>
-
-
+    <script src="js/scroll.js"></script>
+    <script defer src="js/hamburger.js"></script>
+    <script defer src="js/planewaves.js"></script>
+    <script defer src="js/plotlib.js"></script>
+    <script defer src="js/amplitude_frequency.js"></script>
+    <script defer src="js/ParticleMotion.js"></script>
+    <script defer src="js/SoundPressure.js"></script>
+    
+    
     
     <!-- LATEX equation interpreter -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
@@ -24,88 +29,97 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
     
     <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
     
     <!-- MATLABJS -->
     <script src="https://cdn.jsdelivr.net/gh/VivekTRamamoorthy/MatlabJS/Matlab.js"></script>
     
 </head>
 <body>
-    <header>
-        <div id="title">
-            <h1>Acoustics</h1>
-        </div>
-        <div class="navcontainer">
+    <div class="page-container">
+        <header>
+            <div class="hamburger-container">
+                <button class="hamburger hamburger--arrow" type="button">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+            <div class="page-title" id="title">
+                <h1>Acoustics</h1>
+            </div>
             <nav>
-                <a href="#basics">Basics</a>
-                <a href="#planewaves1d">1D plane waves</a>
-                <a href="#planewaves2d">2D plane waves</a>           
-            </nav>
-        </div>
-    </header>
-    
-    <section id="basics">
-        <h2>Basics</h2>
-        <h3>What is sound?</h3>
-        <p> Sound as we hear it, is simply the fluctuations in air pressure over and above the
-            atmospheric pressure, which is ~ 100 000 Pascals, repeating between 20 and 20,000 times a second.
-        </p>
-        <p>\(P = P_{atm} +p\)</p>
-        <p>where \(P_{atm}\) is the atmospheric pressure, \(p\) is the acoustic pressure, and \(P\) is the total pressure.</p>
-        <p>
-            When we speak, our vocal chords vibrate and produce pressure disturbances 
-            that oscillate several hundreds of times in a second. These oscillations propagate at the speed
-            of sound. Our ears detect these pressure changes and our brains process it as language.
-        </p>
-        
-        <div class="flex-column">
-            <div id="SoundPressureText">Pressure fluctuations : </div>
-            <input id="SoundPressureSlider" type="range" min="0" max="100" value="50">
-            
-            <!-- <img width="100" src="https://cdn.drawception.com/drawings/823412/95q7bXmJt7.png"> -->
-            <canvas height="100" id="SoundPressureCanvas"></canvas>
-        </div>
-        
-        <h2> Amplitude and frequency</h2>
-        <p>Because the pressure variation over and above the atmospheric pressure can vary , the amplitude of sound is measured </p>
-        
-        <div class="flex-row">
-            <div class="flex-column">
-                <div id="amplitudeOutput">Amplitude: </div>
-                <input id="amplitudeSlider" type="range" min="0" max="100" value="50">
-                <div id="frequencyOutput">Frequency: </div>
-                <input id="frequencySlider" type="range" min="0" max="100" value="50">
-                <br>
-                <canvas id="AmplitudeFrequencyCanvas" ></canvas>
+                <button href="#basics">Basics               </button>
+                <!-- <button href="#planewaves1d">1D plane waves </button>
+                    <button href="#planewaves2d">2D plane waves </button>            -->
+                </nav>
+            </header>
+
+
+
+
+            <div class="content-container">
+                
+                <section id="basics">
+                    <h1>Basics</h1>
+                    <h2>What is sound?</h2>
+                    <p> Sound as we hear it, is simply the fluctuations in air pressure over and above the
+                        atmospheric pressure, which is ~ 100 000 Pascals, repeating between 20 and 20,000 times a second.
+                    </p>
+                    <p>\(P = P_{atm} +p\)</p>
+                    <p>where \(P_{atm}\) is the atmospheric pressure, \(p\) is the acoustic pressure, and \(P\) is the total pressure.</p>
+                    <p>
+                        When we speak, our vocal chords vibrate and produce pressure disturbances 
+                        that oscillate several hundreds of times in a second. These oscillations propagate at the speed
+                        of sound. Our ears detect these pressure changes and our brains process it as language.
+                    </p>
+                    <div class="flex-column">
+                        <div id="SoundPressureText">Pressure fluctuations : </div>
+                        <input id="SoundPressureSlider" type="range" min="0" max="100" value="50">
+                        <canvas height="100" id="SoundPressureCanvas"></canvas>
+                    </div>
+
+                    <h2> Amplitude and frequency</h2>
+                    <p>Because the pressure variation over and above the atmospheric pressure can vary , the amplitude of sound is measured </p>
+                    
+                    <div class="flex-row">
+                        <div class="flex-column">
+                            <div id="amplitudeOutput">Amplitude: </div>
+                            <input id="amplitudeSlider" type="range" min="0" max="100" value="50">
+                            <div id="frequencyOutput">Frequency: </div>
+                            <input id="frequencySlider" type="range" min="0" max="100" value="50">
+                            <br>
+                            <canvas id="AmplitudeFrequencyCanvas" ></canvas>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                    <h3>Frequency and amplitude</h3>
+                    
+                </section>
+                <!-- <section id="planewaves1d">
+                    <h2>1D planewaves</h2>
+                    
+                </section>
+                
+                <section id="planewaves2d">
+                    <h2>2D planewaves</h2>
+                    <div class="subsection">
+                        
+                    </div>
+                </section> -->
             </div>
             
         </div>
         
         
         
-        <h3>Frequency and amplitude</h3>
-        
-    </section>
-    <section id="planewaves1d">
-        <h2>1D planewaves</h2>
-        
-    </section>
-    
-    <section id="planewaves2d">
-        <h2>2D planewaves</h2>
-        <div class="subsection">
+        <script src="planewaves.js"></script>
+        <script>
+            // navbar handling
             
-        </div>
-    </section>
-    
-    
-    
-    
-    <script src="planewaves.js"></script>
-    <script>
-        // navbar handling
-        
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
