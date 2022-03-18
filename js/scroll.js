@@ -29,5 +29,5 @@ rightButton.addEventListener("touch",()=>{goToNextPage();})
 
 function goToNextPage(){
     let sections = document.querySelectorAll("section");
-
+    
 }

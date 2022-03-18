@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     
     <!-- <script defer src="cx.js"></script> -->
-    <script src="js/scroll.js"></script>
+    <script defer src="js/scroll.js"></script>
     <script defer src="js/hamburger.js"></script>
     <script defer src="js/planewaves.js"></script>
     <script defer src="js/plotlib.js"></script>
@@ -73,8 +73,9 @@
                         that oscillate several hundreds of times in a second. These oscillations propagate at the speed
                         of sound. Our ears detect these pressure changes and our brains process it as language.
                     </p>
+                    <h2>Acoustic pressure vs atmospheric pressure</h2>
                     <div class="flex-column">
-                        <div id="SoundPressureText">Pressure fluctuations : </div>
+                        <div id="SoundPressureText"> Acoustic pressure : </div>
                         <input id="SoundPressureSlider" type="range" min="0" max="100" value="50">
                         <canvas height="100" id="SoundPressureCanvas"></canvas>
                     </div>
@@ -110,16 +111,10 @@
                         
                     </div>
                 </section> -->
+                <div class="leftArrow" id="left-button"></div>
+                <div class="rightArrow" id="right-button"></div>
             </div>
             
         </div>
-        
-        
-        
-        <script src="planewaves.js"></script>
-        <script>
-            // navbar handling
-            
-        </script>
     </body>
     </html>

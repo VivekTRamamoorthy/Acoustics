@@ -2,7 +2,7 @@
 const SoundPressureText = document.getElementById("SoundPressureText");
 const SoundPressureSlider = document.getElementById("SoundPressureSlider");
 const SoundPressureCanvas = document.getElementById("SoundPressureCanvas");
-var SPC=SoundPressureCanvas.getContext("2d");
+const SPC=SoundPressureCanvas.getContext("2d");
 
 var SoundPressureValue = 10**(50/20);; // Pascals
 
@@ -36,9 +36,11 @@ function SoundPressureUpdate(SoundPressureValue){
     // Draw axis
     let x2px = x => x*SoundPressureCanvas.width;
     let y2px = y => (1-y)*SoundPressureCanvas.height;
+    let rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
     SPC.beginPath()
     SPC.strokeStyle = 'black';
     SPC.lineWidth = 2;
+    SPC.fontSize = 1*rem;
     SPC.moveTo(x2px(.1),y2px(.9))
     SPC.lineTo(x2px(.1),y2px(.1))
     SPC.lineTo(x2px(.9),y2px(.1))
@@ -46,7 +48,7 @@ function SoundPressureUpdate(SoundPressureValue){
 
     // Draw Patm line
     SPC.beginPath()
-    SPC.strokeStyle = 'black';
+    SPC.strokeStyle = 'blue';
     SPC.lineWidth = 1;
     SPC.moveTo(x2px(.1),y2px(.5))
     SPC.lineTo(x2px(.9),y2px(.5))
@@ -55,12 +57,12 @@ function SoundPressureUpdate(SoundPressureValue){
     // Text Patm
     SPC.font = 0.1*SoundPressureCanvas.height+"px Arial ";
     SPC.fillText("Patm",x2px(0.9),y2px(.5))
-    SPC.fillText("P",x2px(0.05),y2px(.5))
+    SPC.fillText("p",x2px(0.05),y2px(.5))
     SPC.fillText("Time",x2px(0.5),y2px(.01))
 
     // Pressure signal
     SPC.beginPath()
-    SPC.strokeStyle = 'black';
+    SPC.strokeStyle = 'red';
     SPC.lineWidth = 1;
     SPC.moveTo(x2px(.1),y2px(.5))
     pressureRandom.forEach((y,i)=> {SPC.lineTo(x2px(.1+i/lengthPressureRandom*.8), y2px(y*SoundPressureValue/Patm*.4+.5))})
