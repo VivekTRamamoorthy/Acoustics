@@ -9,7 +9,7 @@ body{
 }
 .page-container{
   display:grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: minmax(400px,1fr) 4fr;
   height: 100vh;
 }
 .content-container{
@@ -101,7 +101,7 @@ section.hide{
   display:none !important;
 }
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .page-container{
     grid-template-columns: 1fr;
   }

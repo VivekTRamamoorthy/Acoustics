@@ -63,6 +63,9 @@ header>nav.is-active{
     header.is-active{
         background-color: rgba(0,0,0,0.7);
     }
+    .page-title{
+        display: none;
+    }
     .hamburger-container, .hamburger{
         display: block;
         float:left;
@@ -85,5 +88,8 @@ header>nav.is-active{
         align-items: center;
         text-align: center;
 
+    }
+    .page-title.is-active{
+        display:block;
     }
 }
