@@ -10,6 +10,12 @@ header{
 .hamburger-container, .hamburger{
     display:none;
 }
+.hamburger .hamburger-inner, .hamburger .hamburger-inner::after, .hamburger .hamburger-inner::before{
+background-color: teal;
+}
+.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::after, .hamburger.is-active .hamburger-inner::before{
+    background-color: white;
+} 
 .page-title{
     display:flex;
     justify-content: center;

@@ -40,7 +40,6 @@ function SoundPressureUpdate(SoundPressureValue){
     SPC.beginPath()
     SPC.strokeStyle = 'black';
     SPC.lineWidth = 2;
-    SPC.fontSize = 1*rem;
     SPC.moveTo(x2px(.1),y2px(.9))
     SPC.lineTo(x2px(.1),y2px(.1))
     SPC.lineTo(x2px(.9),y2px(.1))
@@ -55,7 +54,7 @@ function SoundPressureUpdate(SoundPressureValue){
     SPC.stroke()
 
     // Text Patm
-    SPC.font = 0.1*SoundPressureCanvas.height+"px Arial ";
+    SPC.font = rem+"px Arial ";
     SPC.fillText("Patm",x2px(0.9),y2px(.5))
     SPC.fillText("p",x2px(0.05),y2px(.5))
     SPC.fillText("Time",x2px(0.5),y2px(.01))
